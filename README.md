@@ -1,43 +1,55 @@
-# Synopsis
+# AirBnB Clone - The Console
+The console is the first segment of the AirBnB project at Holberton School that will collectively cover fundamental concepts of higher level programming. The goal of AirBnB project is to eventually deploy our server a simple copy of the AirBnB Website(HBnB). A command interpreter is created in this segment to manage objects for the AirBnB(HBnB) website.
 
-> The Airbnb clone project for which we are creating a copy of the [Airbnb](https://www.airbnb.com/).
-> Only some features will be implemented and will be listed below once completed.
-> At this stage, we are implementing an additional storage option. Based on which 
-> database is chosen (file storage or database storage), JSON is used or
-> MySQL and SQLalchemy is used via Python. Fabric is used for application deployment.
+## Table of Content
+* [Environment](#environment)
+* [Installation](#installation)
+* [File Descriptions](#file-descriptions)
+* [Bugs](#bugs)
+* [Authors](#authors)
+* [License](#license)
 
-## Features
+## Environment
+This project is interpreted/tested on Ubuntu 14.04 LTS using python3 (version 3.4.3)
 
-### Command Interpreter
+## Installation
+* Clone this repository: `git clone "https://github.com/alexaorrico/AirBnB_clone.git"`
+* Access AirBnb directory: `cd AirBnB_clone`
+* Run hbnb(interactively): `./console` and enter command
+* Run hbnb(non-interactively): `echo "<command>" | ./console.py`
 
-#### Description
+## File Descriptions
+[console.py](console.py) - the console contains the entry point of the command interpreter. 
+List of commands this console current supports:
+* `EOF` - exits console 
+* `quit` - exits console
+* `<emptyline>` - overwrites default emptyline method and does nothing
+* `create` - Creates a new instance of`BaseModel`, saves it (to the JSON file) and prints the id
+* `destroy` - Deletes an instance based on the class name and id (save the change into the JSON file). 
+* `show` - Prints the string representation of an instance based on the class name and id.
+* `all` - Prints all string representation of all instances based or not on the class name. 
+* `update` - Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file). 
 
-The Command Interpreter is used to manage the whole application's functionality from the command line, such as:
-+ Create a new object.
-+ Retrieve an object from a file, database, etc.
-+ Execute operation on objects. e.g. Count, compute statistics, etc.
-+ Update object's attributes.
-+ Destroy an object.
+#### `models/` directory contains classes used for this project:
+[base_model.py](/models/base_model.py) - The BaseModel class from which future classes will be derived
+* `def __init__(self, *args, **kwargs)` - Initialization of the base model
+* `def __str__(self)` - String representation of the BaseModel class
+* `def save(self)` - Updates the attribute `updated_at` with the current datetime
+* `def to_dict(self)` - returns a dictionary containing all keys/values of the instance
 
-#### Usage
+Classes inherited from Base Model:
+* [amenity.py](/models/amenity.py)
+* [city.py](/models/city.py)
+* [place.py](/models/place.py)
+* [review.py](/models/review.py)
+* [state.py](/models/state.py)
+* [user.py](/models/user.py)
 
-To launch the console application in interactive mode simply run:
+## Bugs
+No known bugs at this time. 
 
-```console.py ```
+## Authors
+Odedame Bright Elo
 
-or to use the non-interactive mode run:
-
-```echo "your-command-goes-here" | ./console.py ```
-
-#### Commands
-
-Commands | Description | Usage
--------- | ----------- |-------- |
-**help** or **?**| Displays the documented commands. | **help**
-**quit**     | Exits the program. | **quit**
-**EOF**      | Ends the program. Used when files are passed into the program. | N/A
-**create**  | Creates a new instance of the \<class_name\>. Creates a Json file with the object representation. and prints the id of created object. | **create** \<class_name\>
-**show**    | Prints the string representation of an instance based on the class name and id. | **show** \<class_name class_id\>
-**destroy** | Deletes and instance base on the class name and id. | **destroy** \<class_name class_id\>
-**all** | Prints all string representation of all instances based or not on the class name | **all** or **all** \<class_name class_id\>
-**update** | Updates an instance based on the class name and id by adding or updating attribute | **update** \<class_name class_id key value\>
+## License
+Public Domain. No copy write protection. 
